@@ -44,15 +44,15 @@ class StructTokenizerConfig:
 class DPLM2Config:
     ## DPLM model
     num_diffusion_timesteps: int = field(default=500)
-    tokenizer: TokenizerConfig = field(default=TokenizerConfig())
-    lora: LoRAConfig = field(default=LoRAConfig())
-    net: NetConfig = field(default=NetConfig())
+    tokenizer: TokenizerConfig = field(default_factory=TokenizerConfig)
+    lora: LoRAConfig = field(default_factory=LoRAConfig)
+    net: NetConfig = field(default_factory=NetConfig)
     gradient_ckpt: bool = field(default=False)
 
     ## multi-modal training
     training_stage: str = field(default="train_from_dplm")
     self_mixup: SelfMixupConfig = field(
-        default=SelfMixupConfig()
+        default_factory=SelfMixupConfig
     )  # training strategy
     single_modality_ratio: float = field(default=0.25)
     folding_loss_ratio: float = field(default=0.25)
@@ -62,7 +62,7 @@ class DPLM2Config:
 
     ## struct tokenizer
     struct_tokenizer: StructTokenizerConfig = field(
-        default=StructTokenizerConfig()
+        default_factory=StructTokenizerConfig
     )
 
 
