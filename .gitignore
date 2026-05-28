@@ -151,8 +151,18 @@ wandb/
 workspace.ipynb
 run/logs
 
-# model weight
+# model weights and large binary files
 *.ckpt
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.arrow
+*.parquet
 
 # pdb
 *.pdb
