@@ -159,6 +159,16 @@ run/logs
 
 byprot-checkpoints/
 generation-results/
-data-bin/scaffolding-pdbs/*.pdb
+# data-bin/scaffolding-pdbs/*.pdb  # covered by data-bin/ rule above
 temp.ipynb
 # run/
+
+# Large data files and archives (download via scripts/; see DATA_README.md)
+data-bin/
+*.tar.gz
+*.tar
+*.zip
+
+# Claude Code
+.claude/
+CLAUDE.md

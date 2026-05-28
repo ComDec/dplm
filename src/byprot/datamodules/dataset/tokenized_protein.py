@@ -25,7 +25,7 @@ def load_vocab_file(vocab_file):
         return [l.strip() for l in lines]
 
 
-def preprocess_dataset(csv_path, data_bin, split):
+def preprocess_dataset(csv_path, data_bin, split, struct_vocab_size=8192):
     def remove_lowconf_ends(row, threshold=50):
         aa_seq, ss_seq, plddt = (
             row["aa_seq"],
@@ -641,5 +641,10 @@ def setup_dataloader(
 
 
 def load_dataset_from_hf(data_path, split):
+    disk_path = os.path.join(data_path, split)
+    if os.path.isdir(disk_path):
+        from datasets import load_from_disk
+        ds = load_from_disk(disk_path)
+        return ds
     ds = load_dataset(data_path, name=split)["train"]
     return ds
