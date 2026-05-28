@@ -1,5 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
 pip install torch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 --index-url https://download.pytorch.org/whl/cu121
+
+pip install "setuptools<70"
 
 pip install -e .
 
-pip install -e vendor/openfold
+pip install --no-build-isolation -e vendor/openfold
+
+pip install torch-scatter torch-sparse torch-cluster torch-spline-conv \
+    -f https://data.pyg.org/whl/torch-2.2.0+cu121.html
+
+pip install fairscale
